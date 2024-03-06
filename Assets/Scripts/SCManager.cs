@@ -9,7 +9,7 @@ public class SCManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
-    void LoadScene(string name) {
+    public void LoadScene(string name) {
         SceneManager.LoadScene(name);
     }
 }

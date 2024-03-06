@@ -393,7 +393,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 383988991}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 824405207}
+        m_TargetAssemblyTypeName: ButtonActions, Assembly-CSharp
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &383988991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,7 +566,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 824405205}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37c2c5f6f291ff446a795d299507fdda, type: 3}
+  m_Script: {fileID: 11500000, guid: 34af1525940bb1544b53cb24eebdaeec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &890169579
@@ -707,7 +719,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1404072123}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 824405207}
+        m_TargetAssemblyTypeName: ButtonActions, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1404072123
 MonoBehaviour:
   m_ObjectHideFlags: 0
