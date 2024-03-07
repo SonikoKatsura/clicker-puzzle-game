@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
         Cursor.SetCursor(iconoCursor, Vector2.zero, CursorMode.ForceSoftware);
     }
 
-    void Update() { 
+    void Update() {
+        
     }
 }
