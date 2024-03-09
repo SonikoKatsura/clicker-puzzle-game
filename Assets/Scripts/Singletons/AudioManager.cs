@@ -39,14 +39,15 @@ public class AudioManager : MonoBehaviour {
         if (sfxClips.ContainsKey(clipName)) {
             sfxSource.clip = sfxClips[clipName];
             sfxSource.Play();
-        } else Debug.LogWarning("El AudioClip " + clipName + " no se encontró en el diccionario de sfxClips.");
+        } else Debug.LogWarning("El AudioClip " + clipName + " no se encontrï¿½ en el diccionario de sfxClips.");
     }
 
     public void PlayMusic(string clipName) {
         if (musicClips.ContainsKey(clipName)) {
+            Debug.Log("aja");
             musicSource.clip = musicClips[clipName];
             musicSource.Play();
-        } else Debug.LogWarning("El AudioClip " + clipName + " no se encontró en el diccionario de musicClips.");
+        } else Debug.LogWarning("El AudioClip " + clipName + " no se encontrï¿½ en el diccionario de musicClips.");
 
         musicSource.loop = (clipName == "mainTheme") ? true : false;
     }
