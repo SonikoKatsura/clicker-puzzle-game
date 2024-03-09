@@ -20,15 +20,14 @@ public class AudioManager : MonoBehaviour {
         LoadMusicClips();
     }
 
-    private void LoadSFXClips() {
-        sfxClips["DefeatJingle"] = Resources.Load<AudioClip>("SFX/defeat_level");
-        sfxClips["StartLevelJingle"] = Resources.Load<AudioClip>("SFX/start_level");
-        sfxClips["NextLevelJingle"] = Resources.Load<AudioClip>("SFX/next_level");
-        sfxClips["Clic"] = Resources.Load<AudioClip>("SFX/click");
-        sfxClips["BloodDamage"] = Resources.Load<AudioClip>("SFX/damage");
+    private void LoadSFXClips() {   
+        sfxClips["NextLevel"] = Resources.Load<AudioClip>("SFX/next_level");
+        sfxClips["StartLevel"] = Resources.Load<AudioClip>("SFX/start_level");
+        sfxClips["DefeatLevel"] = Resources.Load<AudioClip>("SFX/defeat_level");
+        sfxClips["Click"] = Resources.Load<AudioClip>("SFX/click");
+        sfxClips["Damage"] = Resources.Load<AudioClip>("SFX/damage");
         sfxClips["Shot"] = Resources.Load<AudioClip>("SFX/shot");
-        sfxClips["Impact"] = Resources.Load<AudioClip>("SFX/impact");
-        sfxClips["Explosion"] = Resources.Load<AudioClip>("SFX/explosion");
+
     }
 
     private void LoadMusicClips() {

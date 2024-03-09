@@ -1,23 +1,30 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
     Rigidbody2D rb;
     SpriteRenderer rbSprite;
     float speed = 10f;
-    [SerializeField] int clicks = 15;
+    [SerializeField] int clicks;
     TMP_Text clicksText;
+    [SerializeField] GameObject blood;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         rbSprite = GetComponent<SpriteRenderer>();
-        clicksText = GameObject.Find("ClicksText").GetComponent<TMP_Text>();
+        clicksText = GameObject.Find("Counter").GetComponent<TMP_Text>();
+        clicksText.text = $"clics: {GameManager.instance.GetClicks()}";
+        clicks = GameManager.instance.GetClicks();
+        GameObject.Find("Fill").GetComponent<Image>().fillAmount = GameManager.instance.lifeShown / GameManager.instance.maxLife;
     }
 
     void Update() {
-        if (Input.GetMouseButtonDown(0) && clicks != 0)
+        if (Input.GetMouseButtonDown(0) && GameManager.instance.canMove)
         {
-            if (clicksText != null) clicksText.text = $"{--clicks}";
+            GameManager.instance.SetClics(--clicks);
+            if (clicksText != null) clicksText.text = $"clics: {GameManager.instance.GetClicks()}";
             Move();
         }
     }
@@ -36,11 +43,21 @@ public class PlayerController : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collision) {
         rb.velocity = default(Vector2);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
+    private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.name == "Exit") return;
-        //particles
+        StartCoroutine(Die());
         //audio
+    }
+
+    void InstantBlood() {
+        Instantiate(blood, transform.position, Quaternion.identity);
+    }
+
+    public IEnumerator Die() {
+        InstantBlood();
+        GameManager.instance.canMove = false;
+        GameManager.instance.SetIsPlaying(false);
+        yield return new WaitForSeconds(1f);
         SCManager.instance.LoadScene("LoseScene");
     }
 }

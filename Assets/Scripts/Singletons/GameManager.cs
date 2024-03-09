@@ -9,42 +9,76 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance;
     [SerializeField] Texture2D iconoCursor;
 
-    bool isPlaying = false;
+    bool isPlaying;
 
-    GameObject HPBar;
-    float life, maxLife = 100;
+    public GameObject HPBar;
+    float life = 100;
+    public float maxLife = 100;
+    public float lifeShown = 100;
     bool isReducingHP = false;
+    int hpReduce = 0;
+    [SerializeField] int clicks = 15;
+    public bool canMove = false;
+
 
     void Start() {
         if (instance == null) instance = this;
         else { Destroy(gameObject); return; }
         DontDestroyOnLoad(gameObject);
-
-        AudioManager.instance.PlayMusic("MainTheme");
-        AudioManager.instance.PlaySFX("StartLevelJingle");
+        hpReduce = Mathf.RoundToInt(maxLife / clicks);
         Cursor.SetCursor(iconoCursor, Vector2.zero, CursorMode.ForceSoftware);
     }
 
     void Update() {
-        if (Input.GetMouseButtonDown(0) && isPlaying) {
+        if (Input.GetMouseButtonDown(0) && isPlaying && canMove) {
             if (isReducingHP) StopCoroutine(ReduceHPProcedural());
             StartCoroutine(ReduceHPProcedural());
         }
+        if ((life <= 0 || clicks == 0) && isPlaying)
+            StartCoroutine(GameObject.Find("Player").GetComponent<PlayerController>().Die());
     }
 
     IEnumerator ReduceHPProcedural() {
-        if (HPBar == null) yield break;
+        if (HPBar == null) HPBar = GameObject.Find("Fill");
         isReducingHP = true;
-        life -= 20;
-        for (float i = life + 20; i > life; i--) {
-            ReduceHP(i);
-            yield return new WaitForEndOfFrame();
+        life -= hpReduce;
+        for (float i = hpReduce; i > 0; i--) {
+            ReduceHP(1);
+            yield return new WaitForFixedUpdate();
         }
-        if (life == 0) SCManager.instance.LoadScene("LoseScene");
+        
         isReducingHP = false;
     }
 
     void ReduceHP(float amount) {
-        HPBar.GetComponent<Image>().fillAmount = amount / maxLife;
+        lifeShown -= amount;
+        HPBar.GetComponent<Image>().fillAmount = lifeShown / maxLife;
+    }
+
+    public void SetClics(int clics)
+    {
+        this.clicks = clics;
+    }
+
+    public int GetClicks()
+    {
+        return this.clicks;
+    }
+
+    public void SetIsPlaying(bool isPlaying)
+    {
+        this.isPlaying = isPlaying;
+    }
+
+    public bool IsPlaying()
+    {
+        return this.isPlaying;
+    }
+
+    public void SetLife(float amount)
+    {
+        life = amount;
+        maxLife = amount;
+        lifeShown = amount;
     }
 }
