@@ -22,11 +22,11 @@ public class TurretController : MonoBehaviour {
 
     private IEnumerator Shoot() {
         while (true) {
+            yield return new WaitForSeconds(reload);
             target = (player.transform.position - transform.position).normalized;
             GameObject missile = Instantiate(missilePrefab, spawnPoint.transform);
             missile.transform.SetParent(null);
             missile.GetComponent<Rigidbody2D>().velocity = target.normalized * proyectileSpeed;
-            yield return new WaitForSeconds(reload);
         }
     }
 }
