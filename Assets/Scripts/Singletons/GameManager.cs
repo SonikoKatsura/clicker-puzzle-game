@@ -11,9 +11,6 @@ public class GameManager : MonoBehaviour {
 
     bool isPlaying = false;
 
-    [SerializeField] int clicks = 15;
-    TMP_Text clicksText;
-
     GameObject HPBar;
     float life, maxLife = 100;
     bool isReducingHP = false;
@@ -30,7 +27,6 @@ public class GameManager : MonoBehaviour {
 
     void Update() {
         if (Input.GetMouseButtonDown(0) && isPlaying) {
-            if (clicksText != null) clicksText.text = $"{--clicks}";
             if (isReducingHP) StopCoroutine(ReduceHPProcedural());
             StartCoroutine(ReduceHPProcedural());
         }

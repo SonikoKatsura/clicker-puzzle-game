@@ -8,7 +8,7 @@ public class BulletController : MonoBehaviour {
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision != null) StartCoroutine("Stuck");
+        if (collision != null && collision.gameObject.name != "Water") StartCoroutine("Stuck");
     }
     IEnumerator Stuck() {
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
