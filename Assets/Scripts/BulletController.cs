@@ -1,37 +1,18 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletController : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    { 
-    }
+public class BulletController : MonoBehaviour {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnBecameInvisible()
-    {
+    private void OnBecameInvisible() {
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision != null)
-        {
-            StartCoroutine("Golpeo");
-        }
-
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision != null) StartCoroutine("Stuck");
     }
-    IEnumerator Golpeo()
-    {
-        gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-        yield return new WaitForSeconds(2);
+    IEnumerator Stuck() {
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        yield return new WaitForSeconds(1.5f);
         Destroy(gameObject);
     }
 }
