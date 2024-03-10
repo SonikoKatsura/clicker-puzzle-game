@@ -4,35 +4,34 @@
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections; // Añadir librería de interfaz de usuario (si no estuviera ya)
+using System.Collections; // Aï¿½adir librerï¿½a de interfaz de usuario (si no estuviera ya)
 
 // Implementamos las interfaces IPointerEnterHandler & IPointerExitHandler
 public class PointerHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 
-    // Variable privada para controlar si el mouse está sobre el elemento
+    // Variable privada para controlar si el mouse estï¿½ sobre el elemento
     private bool isHover = false;
 
-    // Método que detecta cuando se pasa el ratón por encima del área del botón
+    // Mï¿½todo que detecta cuando se pasa el ratï¿½n por encima del ï¿½rea del botï¿½n
     public void OnPointerEnter(PointerEventData eventData)
     {
-        // El mouse entra en el área del botón
+        // El mouse entra en el ï¿½rea del botï¿½n
         isHover = true; // Marcamos la variable para indicar que el mouse se superpone
     }
 
-    // Método que detecta cuando sale el botón del área del ratón
+    // Mï¿½todo que detecta cuando sale el botï¿½n del ï¿½rea del ratï¿½n
     public void OnPointerExit(PointerEventData eventData)
     {
-        // El mouse sale del área del botón
+        // El mouse sale del ï¿½rea del botï¿½n
         isHover = false; // Desmarcamos la variable indicando que el mouse ya no se superpone
     }
 
-    // Método que se ejecuta una vez en cada frame
+    // Mï¿½todo que se ejecuta una vez en cada frame
     void Update()
     {
-        // Si el mouse está sobre el elemento se desactivan los disparos hay que mantenerlos
+        // Si el mouse estï¿½ sobre el elemento se desactivan los disparos hay que mantenerlos
         // desactivados constantemente porque hay otro script que los reactiva
-
         if (isHover)
         {
             GameManager.instance.canMove = false;
