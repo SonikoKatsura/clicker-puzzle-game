@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour {
     }
 
     IEnumerator ReduceHPProcedural() {
-        if (HPBar == null) HPBar = GameObject.Find("Fill");
         isReducingHP = true;
         life -= hpReduce;
         for (float i = hpReduce; i > 0; i--) {

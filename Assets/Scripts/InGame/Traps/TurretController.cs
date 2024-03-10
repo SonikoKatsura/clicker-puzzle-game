@@ -5,7 +5,7 @@ using UnityEngine;
 public class TurretController : MonoBehaviour {
     [SerializeField] GameObject missilePrefab;
     [SerializeField] float proyectileSpeed = 8f;
-    [SerializeField] float reload = 3f;
+    [SerializeField] float reload = 1.5f;
     GameObject spawnPoint, player;
     Vector2 target;
 
@@ -23,6 +23,7 @@ public class TurretController : MonoBehaviour {
     private IEnumerator Shoot() {
         while (true) {
             yield return new WaitForSeconds(reload);
+            AudioManager.instance.PlaySFX("Shot");
             target = (player.transform.position - transform.position).normalized;
             GameObject missile = Instantiate(missilePrefab, spawnPoint.transform);
             missile.transform.SetParent(null);

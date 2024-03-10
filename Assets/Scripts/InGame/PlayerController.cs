@@ -12,11 +12,13 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] GameObject blood;
 
     void Start() {
+        AudioManager.instance.PlaySFX("StartLevel");
         rb = GetComponent<Rigidbody2D>();
         rbSprite = GetComponent<SpriteRenderer>();
         clicksText = GameObject.Find("Counter").GetComponent<TMP_Text>();
         clicksText.text = $"clics: {GameManager.instance.GetClicks()}";
         clicks = GameManager.instance.GetClicks();
+        GameManager.instance.HPBar = GameObject.Find("Fill");
         GameObject.Find("Fill").GetComponent<Image>().fillAmount = GameManager.instance.lifeShown / GameManager.instance.maxLife;
     }
 
@@ -55,9 +57,11 @@ public class PlayerController : MonoBehaviour {
 
     public IEnumerator Die() {
         InstantBlood();
+        AudioManager.instance.PlaySFX("Damage");
         GameManager.instance.canMove = false;
         GameManager.instance.SetIsPlaying(false);
         yield return new WaitForSeconds(1f);
+        AudioManager.instance.PlaySFX("DefeatLevel");
         SCManager.instance.LoadScene("LoseScene");
     }
 }

@@ -364,7 +364,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1937380698691232980, guid: b60e64cc46613b546b7cbbfc14b57622, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -396,7 +397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missilePrefab: {fileID: 6839071000577221541, guid: e20c46a98fb7d164c8f8f871506373cc, type: 3}
   proyectileSpeed: 8
-  reload: 3
+  reload: 1.5
 --- !u!1 &151435769
 GameObject:
   m_ObjectHideFlags: 0
@@ -2702,7 +2703,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1937380698691232980, guid: b60e64cc46613b546b7cbbfc14b57622, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -2734,7 +2736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missilePrefab: {fileID: 6839071000577221541, guid: e20c46a98fb7d164c8f8f871506373cc, type: 3}
   proyectileSpeed: 8
-  reload: 3
+  reload: 1.5
 --- !u!1 &1314866209
 GameObject:
   m_ObjectHideFlags: 0
@@ -5417,7 +5419,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1937380698691232980, guid: b60e64cc46613b546b7cbbfc14b57622, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -5449,7 +5452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missilePrefab: {fileID: 6839071000577221541, guid: e20c46a98fb7d164c8f8f871506373cc, type: 3}
   proyectileSpeed: 8
-  reload: 3
+  reload: 1.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

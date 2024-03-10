@@ -44,7 +44,6 @@ public class AudioManager : MonoBehaviour {
 
     public void PlayMusic(string clipName) {
         if (musicClips.ContainsKey(clipName)) {
-            Debug.Log("aja");
             musicSource.clip = musicClips[clipName];
             musicSource.Play();
         } else Debug.LogWarning("El AudioClip " + clipName + " no se encontr� en el diccionario de musicClips.");
