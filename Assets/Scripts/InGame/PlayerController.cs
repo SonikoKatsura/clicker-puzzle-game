@@ -57,6 +57,8 @@ public class PlayerController : MonoBehaviour {
 
     public IEnumerator Die() {
         InstantBlood();
+        rb.velocity = Vector2.zero;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
         AudioManager.instance.PlaySFX("Damage");
         GameManager.instance.canMove = false;
         GameManager.instance.SetIsPlaying(false);
